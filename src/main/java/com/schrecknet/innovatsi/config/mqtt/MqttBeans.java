@@ -1,6 +1,12 @@
 package com.schrecknet.innovatsi.config.mqtt;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.TimeZone;
+
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.integration.annotation.ServiceActivator;
@@ -17,8 +23,16 @@ import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 import org.springframework.messaging.MessagingException;
 
+import com.fasterxml.jackson.databind.ser.std.NumberSerializers.IntegerSerializer;
+import com.schrecknet.innovatsi.domain.Sector;
+import com.schrecknet.innovatsi.repository.SectorRepository;
+
 @Configuration
 public class MqttBeans {
+	
+	@Autowired
+	private SectorRepository sectorRepo;
+	
 	
 	@Bean
 	public MqttPahoClientFactory mqttClientFactory() {
@@ -64,7 +78,16 @@ public class MqttBeans {
 				if(topic.equals("mytopic")) {
 					System.out.println("This is the topic");
 				}
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 				System.out.println(message.getPayload());
+				try {
+					//TODO
+					//Sector setor = new Sector(null, "A", sdf.parse("22/03/2018"), message.getPayload().toString());
+					//sectorRepo.save(setor);
+				} catch (ParseException e) {
+					e.printStackTrace();
+				}
 			}
 
 		};

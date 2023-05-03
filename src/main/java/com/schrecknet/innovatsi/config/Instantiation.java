@@ -32,10 +32,8 @@ public class Instantiation implements CommandLineRunner {
 		sectorRepo.deleteAll();
 		
 		Company comglom = new Company(null, "Comglom-O", "258555666-85");
-		Sector setorA = new Sector(null, "A", sdf.parse("22/03/2018"), Arrays.asList("80", "81", "82"), Arrays.asList("65%", "66%", "64%"));
 		
 		companyRepo.save(comglom);
-		sectorRepo.save(setorA);
 		
 	}
 
