@@ -81,10 +81,9 @@ public class MqttBeans {
 				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 				sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 				System.out.println(message.getPayload());
-				try {
-					//TODO
-					//Sector setor = new Sector(null, "A", sdf.parse("22/03/2018"), message.getPayload().toString());
-					//sectorRepo.save(setor);
+				try {					
+					Sector setor = new Sector(null, "A", sdf.parse("22/03/2018"), Arrays.asList(message.getPayload().toString()) , Arrays.asList(message.getPayload().toString()));
+					sectorRepo.save(setor);
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}

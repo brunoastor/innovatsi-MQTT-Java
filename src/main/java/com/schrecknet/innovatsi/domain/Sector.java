@@ -15,14 +15,14 @@ public class Sector implements Serializable {
 	private String id;
 	private String sector;
 	private Date date;
-	private List<Integer> heat;
-	private List<Integer> humidity;
+	private List<String> heat;
+	private List<String> humidity;
 	
 	public Sector() {
 		
 	}	
 
-	public Sector(String id, String sector, Date date, List<Integer> heat, List<Integer> humidity) {
+	public Sector(String id, String sector, Date date, List<String> heat, List<String> humidity) {
 		super();
 		this.id = id;
 		this.sector = sector;
@@ -55,19 +55,19 @@ public class Sector implements Serializable {
 		this.date = date;
 	}
 
-	public List<Integer> getHeat() {
+	public List<String> getHeat() {
 		return heat;
 	}
 
-	public void setHeat(List<Integer> heat) {
+	public void setHeat(List<String> heat) {
 		this.heat = heat;
 	}
 
-	public List<Integer> getHumidity() {
+	public List<String> getHumidity() {
 		return humidity;
 	}
 
-	public void setHumidity(List<Integer> humidity) {
+	public void setHumidity(List<String> humidity) {
 		this.humidity = humidity;
 	}
 	
